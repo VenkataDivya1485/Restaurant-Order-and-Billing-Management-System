@@ -22,9 +22,9 @@ class MenuItem:
         return self.price
 
     def apply_discount(self, discount_percent):
-    if discount_percent < 0 or discount_percent > 100:
-        print("Discount must be between 0 and 100.")
-        return
+        if discount_percent < 0 or discount_percent > 100:
+            print("Discount must be between 0 and 100.")
+            return
 
-    self.price = self.price - (self.price * discount_percent / 100)
-    print("Discount applied successfully.")
+        self.price = self.price - (self.price * discount_percent / 100)
+        print("Discount applied successfully.")
