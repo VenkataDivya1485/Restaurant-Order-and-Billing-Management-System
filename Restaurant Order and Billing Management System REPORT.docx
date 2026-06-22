@@ -1,0 +1,192 @@
+Restaurant Order and Billing Management System
+1. Introduction
+Organization
+Considering a small restaurant that sells food items like burgers, pizzas, pasta, and beverages. To manage the orders and keep track of the food items and drinks they serve and generate correct bills, they’ll need a system. 
+Problem
+The traditional method of taking orders can be slow and time-consuming and can also make some mistakes. Calculating bills manually may result in incorrect totals(bills) and keep customers waiting. This is a headache for restaurants. So, the restaurant needs a computer software program to make these tasks easier.
+Purpose
+The purpose of this project is to create a Restaurant Order and Billing Management System using Python. This system helps restaurant staff to manage their food items on the menu, take customer orders accurately, and generate bills quickly. This system will speed up the order taking process and reduce mistakes in generating bills. 
+Scope
+The system will do the following things:
+•	Display the food items that are available on the menu.
+•	Help find the specific food items on the menu.
+•	Add items to customer orders. 
+•	Remove items from customer orders.
+•	Calculate the total cost of the order.
+•	Generate bills for the customers quickly.
+•	Apply tax and discount to the customer bills when necessary.
+
+2. System Design
+The system consists of five main classes.
+Classes and their Responsibilities
+MenuItem
+This part represents a single menu item.
+Attributes:
+•	item_id 
+•	name 
+•	price 
+Methods:
+•	display_item()
+•	update_price ()
+•	get_price()
+•	apply_discount() 
+Menu
+Manage all the items available on the menu.
+Methods:
+•	add_item() 
+•	remove_item() 
+•	search_item() 
+•	display_menu() 
+Order
+Takes and stores customer orders.
+Methods:
+•	add_item() 
+•	remove_item()t 
+•	view_order() 
+•	calculate_total() 
+Bill
+Generates the total customer bills.
+Methods:
+•	calculate_tax() 
+•	apply_discount() 
+•	calculate_final_amount () 
+•	print_bill() 
+Restaurant
+This part acts like the overall controller of the system.
+Methods:
+•	load_menu() 
+•	show_menu() 
+•	take_order() 
+•	generate_customer_bill() 
+Class Relationships
+The Restaurant class is the main controller of the system, and it helps other classes work together.
+The Menu class manages all the food and drinks that are available on the menu of that restaurant. It keeps track of all the MenuItem objects and each MenuItem is a thing on the menu with a specific Id, name and price.
+The Order class takes and manages customer orders. When a customer places an order, the MenuItem which they select are added to their ‘order’  and the Order class keeps track of the items selected for the order and generates the bill for it.
+The Bill class generates the final bill for the customer based on their order. For the bill to be generated the information is taken from the Order class and then the total cost is calculated. Additional taxes or discounts are applied to the bill when necessary and the final bill is generated that the customer must pay.
+The Restaurant class works together with the Menu, Order, and Bill classes. Whereas the Menu and Order classes are dependent on the MenuItem.
+The Bill class depends on the Order class to get order details and generate bill.
+Relationship Summary
+•	The Restaurant class controls the overall system. 
+•	The Menu class contains multiple MenuItem objects. 
+•	The Order class contains selected MenuItem objects ordered by the customer. 
+•	The Bill class uses information from the Order class to generate the final bill. 
+•	All classes work together to provide menu management, order processing, and bill generation functionalities. 
+
+Data Management
+Now, the menu items and customer orders are stored in computers memory using Python lists.
+Examples:
+self.items = A list to store items available on the menu.
+self.order_items = A list to store the items that are ordered by the customers.
+
+3. Implementation Overview
+The project was made using Python Language.
+Classes and Objects
+Each component of the restaurant system is represented as a class.
+For example:
+item1 = MenuItem(1, "Burger", 120)
+This object is used for a menu item.
+Functions and Methods
+To organize things methods were used in every class
+For example:
+def calculate_total(self):
+total = 0
+for item in self.order_items:
+total += item.price
+return total
+This method gives the total cost of an order.
+
+Conditional Statements
+To handle user choices, decision making structures were used.
+For example:
+if choice == "1":
+restaurant.show_menu()
+Loops
+To repeatedly display the system menu until the user chooses to exit, loops were used.
+For example:
+while True:
+Exception and Error Handling
+Input validation was implemented to prevent invalid discount percentages.
+Example:
+if 0 <= discount_percent <= 100:
+The system also handles cases where a menu item is not found.
+Example:
+print("Item not found.")
+Readability and Modularity
+The project was divided into multiple files:
+•	menu_item.py 
+•	menu.py 
+•	order.py 
+•	bill.py 
+•	restaurant.py 
+•	main.py 
+This design improves readability, maintainability, and code reuse.
+
+4. Testing and Demonstration
+Test Case 1: Display Menu
+Input
+1
+Output
+----- MENU -----
+1 - Burger - ₹120
+2 - Pizza - ₹250
+3 - Pasta - ₹180
+4 - Coffee - ₹80
+Test Case 2: Place Order
+Input
+2
+Enter item ID to order: 1
+Output
+Burger added to order.
+
+Test Case 3: Generate Bill
+Ordered Items
+Burger - ₹120
+Pizza - ₹250
+Output
+----- BILL -----
+Burger - ₹120
+Pizza - ₹250
+
+Subtotal : ₹370
+Tax (5%) : ₹18.5
+Discount : ₹0
+Total Bill Amount : ₹388.5
+Test Case 4: Invalid Item ID
+Input
+Enter item ID to order: 10
+Output
+Item not found in menu.
+Testing Procedure
+The system was tested by:
+•	Adding menu items 
+•	Searching for items 
+•	Placing multiple orders 
+•	Removing items 
+•	Generating bills 
+•	Testing invalid inputs 
+All functionalities produced the expected results.
+
+5. Reflection
+Challenges Encountered
+Faced several challenges in the development phase: 
+•	Designing relationships between classes. 
+•	Managing interactions between Menu, Order, and Bill classes.
+•	Implementing bill calculations accurately.
+Lessons Learned
+Through this project, the following concepts were learned:
+•	Class and object creation.
+•	Encapsulation and modular programming.
+•	Method implementation. 
+•	List manipulation.
+•	User input handling. 
+•	Program organization using multiple files. 
+Future Improvements
+Possible future enhancements include:
+•	Storing menu items using CSV files 
+•	Maintaining order history 
+•	Database integration using MySQL 
+•	Customer account management 
+•	Online order processing 
+Conclusion
+The Restaurant Order and Billing Management System successfully automates menu management, order processing, and bill generation. The project demonstrates the practical application of Python programming and Object-Oriented Programming concepts in solving real-world business problems.
+
